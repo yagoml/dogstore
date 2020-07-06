@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <BreedsList />
+    <router-view />
   </div>
 </template>
 
 <script>
-import BreedsList from '@/components/BreedsList'
-
 export default {
-  name: 'App',
-  components: { BreedsList }
+  name: 'App'
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 </style>

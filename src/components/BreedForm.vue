@@ -35,6 +35,7 @@
               v-for="color in colors"
               :key="color"
               class="breed-form__color-ball"
+              :class="{ active: color === form.color }"
               :style="{ 'background-color': color }"
               @click="selectColor(color)"
             ></div>
@@ -113,8 +114,16 @@ export default {
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.15);
+      transform: scale(1.1);
       $shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: $shadow;
+      -moz-box-shadow: $shadow;
+      box-shadow: $shadow;
+    }
+
+    &.active {
+      transform: scale(1.15);
+      $shadow: 0 0 2.5px 2.5px rgb(0, 225, 255);
       -webkit-box-shadow: $shadow;
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;

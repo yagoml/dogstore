@@ -1,6 +1,7 @@
 <template>
   <b-container class="breed-details">
     <h1 class="breed-details__title mb-3">{{ breed }}</h1>
+    <b-breadcrumb :items="breadcrumb"></b-breadcrumb>
     <b-row>
       <b-col cols="12" lg="5">
         <b-card
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import { BContainer, BCol, BRow, BSpinner } from 'bootstrap-vue'
+import { BContainer, BCol, BRow, BSpinner, BBreadcrumb } from 'bootstrap-vue'
 import BreedMixin from '@/mixins/breed'
 import BreedForm from '@/components/BreedForm'
 import BreedCheckout from '@/components/BreedCheckout'
@@ -37,14 +38,24 @@ export default {
     BRow,
     BSpinner,
     BreedForm,
-    BreedCheckout
+    BreedCheckout,
+    BBreadcrumb
   },
 
   mixins: [BreedMixin],
 
   data() {
     return {
-      breed: ''
+      breed: '',
+      breadcrumb: [
+        {
+          text: 'Dog Store',
+          to: '/'
+        },
+        {
+          text: ''
+        }
+      ]
     }
   },
 
@@ -56,12 +67,16 @@ export default {
     this.breed = this.$route.params.breed
     this.getBreedImage()
     this.loadSubBreeds()
+    this.setBreadcrumbText()
   },
 
   methods: {
     ...mapMutations(['setForm']),
     loadSubBreeds() {
       if (!Object.values(this.breeds).length) this.$store.dispatch('loadBreeds')
+    },
+    setBreadcrumbText() {
+      this.breadcrumb[1].text = this.breed
     }
   },
 
@@ -87,7 +102,7 @@ export default {
   }
 
   &__img-card {
-    min-height: 300px;
+    min-height: 290px;
   }
 }
 </style>

@@ -42,6 +42,15 @@ export default {
     breed() {
       return this.$route.params.breed
     }
+  },
+
+  methods: {
+    getPrice(price) {
+      return price.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      })
+    }
   }
 }
 </script>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { listBreeds } from '@/services/dog-api'
+import { setPrices, getPrices } from '@/services/local-storage'
 
 Vue.use(Vuex)
 
@@ -24,6 +25,11 @@ const store = new Vuex.Store({
     },
     setForm(state, form) {
       state.form = form
+    },
+    setLSPrices(state) {
+      const prices = getPrices()
+      if (prices && prices.length) return
+      setPrices(state.breeds)
     }
   },
 
@@ -32,6 +38,7 @@ const store = new Vuex.Store({
       commit('setLoading', true)
       const breeds = await listBreeds()
       commit('setBreeds', breeds)
+      commit('setLSPrices')
       commit('setLoading', false)
     }
   }

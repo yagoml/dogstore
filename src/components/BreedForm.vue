@@ -116,18 +116,20 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'src/variables';
+
 .breed-form {
   &__color-ball {
     width: 30px;
     height: 30px;
     margin-right: 10px;
     border-radius: 30px;
-    transition: 0.2s ease-in-out;
+    transition: $transition-default;
     cursor: pointer;
 
     &:hover {
       transform: scale(1.1);
-      $shadow: 0px 0px 5px -1px #beee62;
+      $shadow: 0px 0px 5px -1px $sulu;
       -webkit-box-shadow: $shadow;
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;
@@ -135,7 +137,7 @@ export default {
 
     &.active {
       transform: scale(1.15);
-      $shadow: 0 0 2.5px 2.5px #beee62;
+      $shadow: 0 0 2.5px 2.5px $sulu;
       -webkit-box-shadow: $shadow;
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;

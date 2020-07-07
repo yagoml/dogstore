@@ -11,17 +11,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'src/variables';
+
 #app {
   padding: 15px 0px;
-  background-color: #3c6e71;
+  background-color: $william;
   min-height: 100vh;
 
   h1 {
-    color: #f4743b;
+    color: $jaffa;
   }
 
   a {
-    color: #beee62;
+    color: $sulu;
   }
 
   .breadcrumb {
@@ -38,37 +40,37 @@ export default {
 
   .form-control,
   .custom-select {
-    color: #483c46;
+    color: $matterhorn;
 
     &:focus {
-      box-shadow: 0 0 2px 0.1rem rgba(190, 238, 98, 0.75);
+      box-shadow: $shadow-green;
     }
   }
 
   .btn {
     &-primary {
-      background-color: #f4743b;
-      border: 1px solid #f4743b;
+      background-color: $jaffa;
+      border: 1px solid $jaffa;
     }
 
     &:focus {
-      box-shadow: 0 0 2px 0.1rem rgba(190, 238, 98, 0.75);
+      box-shadow: $shadow-green;
     }
   }
 
   .pagination {
     .page-item {
       .page-link {
-        transition: 0.2s ease-in-out;
-        border-color: #483c46;
-        color: #483c46;
+        transition: $transition-default;
+        border-color: $matterhorn;
+        color: $matterhorn;
       }
 
       &.active {
         .page-link {
-          background-color: #f4743b;
-          color: #beee62;
-          border-color: #beee62;
+          background-color: $jaffa;
+          color: $sulu;
+          border-color: $sulu;
         }
       }
     }

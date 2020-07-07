@@ -107,15 +107,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'src/variables';
+
 .breed-checkout {
-  border: 1px solid #483c46;
-  color: #483c46;
+  border: 1px solid $matterhorn;
+  color: $matterhorn;
 
   &__item {
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 1px solid $light-gray;
     padding: 15px;
-    transition: 0.2s ease-in-out;
+    transition: $transition-default;
 
     strong {
       margin-left: 10px;

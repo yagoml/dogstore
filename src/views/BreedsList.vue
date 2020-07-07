@@ -76,9 +76,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'src/variables';
+
 .breeds-list {
   &__description {
-    color: #beee62;
+    color: $sulu;
   }
 }
 </style>

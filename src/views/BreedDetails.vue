@@ -110,6 +110,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'src/variables';
+
 .breed-details {
   &__title {
     text-transform: capitalize;
@@ -128,7 +130,7 @@ export default {
   &__img-card {
     min-height: 290px;
     background-color: transparent;
-    border: 1px solid #483c46;
+    border: 1px solid $matterhorn;
 
     .card-body {
       padding: 0;

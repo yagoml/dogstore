@@ -30,7 +30,7 @@ export default {
   },
 
   async created() {
-    this.$store.dispatch('getBreeds')
+    this.$store.dispatch('loadBreeds')
   }
 }
 </script>

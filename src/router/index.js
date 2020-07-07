@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import BreedsList from '@/components/BreedsList'
-import BreedDetails from '@/components/BreedDetails'
+import BreedsList from '@/views/BreedsList'
+import BreedDetails from '@/views/BreedDetails'
 
 Vue.use(VueRouter)
   const routes = [

@@ -25,26 +25,20 @@
 </template>
 
 <script>
-import { getBreedImage } from '@/services/dog-api'
 import { BSpinner, BCard } from 'bootstrap-vue'
+import BreedMixin from '@/mixins/breed'
 
 export default {
   props: {
     breed: { type: String, required: true }
   },
 
+  mixins: [BreedMixin],
+
   components: { BSpinner, BCard },
 
-  data() {
-    return {
-      image: null,
-      loading: true
-    }
-  },
-
-  async created() {
-    this.image = await getBreedImage(this.breed)
-    this.loading = false
+  created() {
+    this.getBreedImage()
   }
 }
 </script>
@@ -71,7 +65,6 @@ export default {
 
   &:hover {
     transform: scale(1.03);
-
     $shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
 
     .card {

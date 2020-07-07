@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BreedsList from '@/components/BreedsList'
+import BreedDetails from '@/components/BreedDetails'
 
 Vue.use(VueRouter)
   const routes = [
@@ -8,6 +9,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'BreedsList',
     component: BreedsList
+  },
+  {
+    path: '/breeds/:breed',
+    name: 'BreedDetails',
+    component: BreedDetails
   }
 ]
 

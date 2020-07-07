@@ -18,28 +18,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BContainer, BRow, BCol } from 'bootstrap-vue'
 import BreedCard from '@/components/BreedCard'
-import { listBreeds } from '@/services/dog-api'
 
 export default {
   components: { BContainer, BreedCard, BRow, BCol },
 
-  data() {
-    return {
-      breeds: [],
-      loading: true
-    }
+  computed: {
+    ...mapState(['breeds', 'loading'])
   },
 
   async created() {
-    this.breeds = await listBreeds()
-    this.loading = false
+    this.$store.dispatch('getBreeds')
   }
 }
 </script>
-
-<style lang="scss">
-.breeds-list {
-}
-</style>

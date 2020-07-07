@@ -8,7 +8,8 @@ const store = new Vuex.Store({
   state: {
     breeds: {},
     loading: false,
-    images: {}
+    images: {},
+    form: {}
   },
 
   mutations: {
@@ -20,11 +21,14 @@ const store = new Vuex.Store({
     },
     setImage(state, params) {
       state.images[params.breed] = params.image
+    },
+    setForm(state, form) {
+      state.form = form
     }
   },
 
   actions: {
-    async getBreeds({commit}) {
+    async loadBreeds({commit}) {
       commit('setLoading', true)
       const breeds = await listBreeds()
       commit('setBreeds', breeds)

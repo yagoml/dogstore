@@ -2,13 +2,23 @@
   <div class="breeds-list">
     <b-container>
       <h1>Dog Store</h1>
-      <p>Please select the dog breed</p>
+      <p>Dogs for sale</p>
+      <b-row>
+        <b-col cols="12" lg="4">
+          <b-form-input
+            class="mb-3"
+            type="text"
+            v-model="filter"
+            placeholder="Search for a breed"
+          />
+        </b-col>
+      </b-row>
       <b-row>
         <b-col v-for="breed in currentBreeds" cols="12" lg="4" :key="breed">
           <BreedCard :breed="breed" />
         </b-col>
       </b-row>
-      <div class="d-flex justify-content-md-center mt-3">
+      <div v-if="totalPages > 1" class="d-flex justify-content-md-center mt-3">
         <b-pagination
           v-model="page"
           :total-rows="total"
@@ -32,18 +42,26 @@ export default {
   data() {
     return {
       page: 1,
-      perPage: 9
+      perPage: 9,
+      filter: ''
     }
   },
 
   computed: {
     ...mapState(['breeds', 'loading']),
     total() {
-      return Object.values(this.breeds).length
+      return this.filteredBreeds.length
+    },
+    totalPages() {
+      return Math.ceil(this.total / this.perPage)
+    },
+    filteredBreeds() {
+      return Object.keys(this.breeds).filter(breed => breed.match(this.filter))
     },
     currentBreeds() {
       const startIndex = (this.page - 1) * 9
-      return Object.keys(this.breeds).splice(startIndex, this.perPage)
+      const filtered = this.filteredBreeds
+      return filtered.splice(startIndex, this.perPage)
     }
   },
 

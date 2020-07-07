@@ -21,17 +21,31 @@
         <BreedCheckout class="mt-3" />
       </b-col>
     </b-row>
+    <div class="d-flex justify-content-lg-end mt-3">
+      <button class="btn btn-primary">
+        <b-icon-cart-check class="mr-1" /> Buy dog
+      </button>
+    </div>
   </b-container>
 </template>
 
 <script>
-import { BContainer, BCol, BRow, BSpinner, BBreadcrumb } from 'bootstrap-vue'
+import {
+  BContainer,
+  BCol,
+  BRow,
+  BSpinner,
+  BBreadcrumb,
+  BIconCartCheck
+} from 'bootstrap-vue'
 import BreedMixin from '@/mixins/breed'
 import BreedForm from '@/components/BreedForm'
 import BreedCheckout from '@/components/BreedCheckout'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
+  name: 'BreedDetails',
+
   components: {
     BContainer,
     BCol,
@@ -39,7 +53,8 @@ export default {
     BSpinner,
     BreedForm,
     BreedCheckout,
-    BBreadcrumb
+    BBreadcrumb,
+    BIconCartCheck
   },
 
   mixins: [BreedMixin],
@@ -76,7 +91,12 @@ export default {
       if (!Object.values(this.breeds).length) this.$store.dispatch('loadBreeds')
     },
     setBreadcrumbText() {
-      this.breadcrumb[1].text = this.breed
+      this.breadcrumb[1].text = this.capitalize(this.breed)
+    },
+    capitalize(text) {
+      const firstLetter = text.charAt(0).toUpperCase()
+      const remaining = text.slice(1, text.length)
+      return firstLetter + remaining
     }
   },
 

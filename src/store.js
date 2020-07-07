@@ -28,7 +28,7 @@ const store = new Vuex.Store({
     },
     setLSPrices(state) {
       const prices = getPrices()
-      if (prices && prices.length) return
+      if (prices) return
       setPrices(state.breeds)
     }
   },

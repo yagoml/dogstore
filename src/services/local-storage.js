@@ -17,7 +17,7 @@ export const setPrices = (dogs) => {
   localStorage.setItem(lsKey, JSON.stringify(prices))
 }
 
-export const getPrices = () => localStorage.getItem(lsKey)
+export const getPrices = () => JSON.parse(localStorage.getItem(lsKey))
 
 const generatePrice = (min = 10, max = 2000) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(2))

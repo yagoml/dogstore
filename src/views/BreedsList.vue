@@ -23,6 +23,8 @@ import { BContainer, BRow, BCol } from 'bootstrap-vue'
 import BreedCard from '@/components/BreedCard'
 
 export default {
+  name: 'BreedsList',
+
   components: { BContainer, BreedCard, BRow, BCol },
 
   computed: {

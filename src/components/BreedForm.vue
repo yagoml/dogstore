@@ -4,7 +4,7 @@
       <b-col v-if="subBreeds && subBreeds.length" cols="12" lg="6">
         <b-form-group label="Sub breed:">
           <b-form-select
-            v-model="form.subBreed"
+            v-model="formData.subBreed"
             :options="subBreeds"
             @input="formChanged()"
           />
@@ -13,7 +13,7 @@
       <b-col cols="12" lg="6">
         <b-form-group label="Gender:">
           <b-form-select
-            v-model="form.gender"
+            v-model="formData.gender"
             :options="genders"
             @input="formChanged()"
           />
@@ -22,7 +22,7 @@
       <b-col cols="12" lg="6">
         <b-form-group label="Age:">
           <b-form-input
-            v-model="form.age"
+            v-model="formData.age"
             type="number"
             @input="formChanged()"
           />
@@ -35,7 +35,7 @@
               v-for="color in colors"
               :key="color"
               class="breed-form__color-ball"
-              :class="{ active: color === form.color }"
+              :class="{ active: color === formData.color }"
               :style="{ 'background-color': color }"
               @click="selectColor(color)"
             ></div>
@@ -56,6 +56,7 @@ import {
   BFormGroup
 } from 'bootstrap-vue'
 import { mapState, mapMutations } from 'vuex'
+import { savePurchaseData } from '@/services/local-storage'
 
 export default {
   components: {
@@ -71,7 +72,7 @@ export default {
     return {
       colors: ['red', 'blue', 'yellow', 'black', 'purple', 'green', 'orange'],
       genders: ['male', 'female'],
-      form: {
+      formData: {
         subBreed: null,
         color: null,
         gender: null,
@@ -80,8 +81,12 @@ export default {
     }
   },
 
+  created() {
+    this.fillFormData()
+  },
+
   computed: {
-    ...mapState(['breeds']),
+    ...mapState(['breeds', 'form']),
     breed() {
       return this.$route.params.breed
     },
@@ -93,11 +98,16 @@ export default {
   methods: {
     ...mapMutations(['setForm']),
     selectColor(color) {
-      this.form.color = color
+      this.formData.color = color
       this.formChanged()
     },
     formChanged() {
-      this.setForm(this.form)
+      this.setForm(this.formData)
+      savePurchaseData(this.formData)
+    },
+    fillFormData() {
+      if (!this.form) return
+      this.formData = { ...this.formData, ...this.form }
     }
   }
 }

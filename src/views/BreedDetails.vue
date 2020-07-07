@@ -42,6 +42,7 @@ import BreedMixin from '@/mixins/breed'
 import BreedForm from '@/components/BreedForm'
 import BreedCheckout from '@/components/BreedCheckout'
 import { mapState, mapMutations } from 'vuex'
+import { purchaseData } from '@/services/local-storage'
 
 export default {
   name: 'BreedDetails',
@@ -83,6 +84,7 @@ export default {
     this.getBreedImage()
     this.loadSubBreeds()
     this.setBreadcrumbText()
+    this.checkPurchaseData()
   },
 
   methods: {
@@ -97,6 +99,11 @@ export default {
       const firstLetter = text.charAt(0).toUpperCase()
       const remaining = text.slice(1, text.length)
       return firstLetter + remaining
+    },
+    checkPurchaseData() {
+      const data = purchaseData()
+      if (!data) return
+      this.setForm(data)
     }
   },
 

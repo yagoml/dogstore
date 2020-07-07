@@ -21,6 +21,7 @@
 import { mapState } from 'vuex'
 import { BContainer, BRow, BCol } from 'bootstrap-vue'
 import BreedCard from '@/components/BreedCard'
+import { savePurchaseData } from '@/services/local-storage'
 
 export default {
   name: 'BreedsList',
@@ -31,8 +32,9 @@ export default {
     ...mapState(['breeds', 'loading'])
   },
 
-  async created() {
+  created() {
     this.$store.dispatch('loadBreeds')
+    savePurchaseData({})
   }
 }
 </script>

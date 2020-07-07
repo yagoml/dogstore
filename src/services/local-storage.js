@@ -1,4 +1,9 @@
-const lsKey = 'breeds_prices'
+const pricesKey = 'breeds_prices'
+const purchaseKey = 'purchase_data'
+
+export const savePurchaseData = (form) => localStorage.setItem(purchaseKey, JSON.stringify(form))
+
+export const purchaseData = () => JSON.parse(localStorage.getItem(purchaseKey))
 
 export const setPrices = (dogs) => {
   const prices = {}
@@ -14,10 +19,10 @@ export const setPrices = (dogs) => {
       }
     } else prices[breed] = generatePrice()
   }
-  localStorage.setItem(lsKey, JSON.stringify(prices))
+  localStorage.setItem(pricesKey, JSON.stringify(prices))
 }
 
-export const getPrices = () => JSON.parse(localStorage.getItem(lsKey))
+export const getPrices = () => JSON.parse(localStorage.getItem(pricesKey))
 
 const generatePrice = (min = 10, max = 2000) =>
   parseFloat((Math.random() * (max - min) + min).toFixed(2))

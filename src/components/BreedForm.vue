@@ -73,6 +73,7 @@ export default {
       colors: ['red', 'blue', 'yellow', 'black', 'purple', 'green', 'orange'],
       genders: ['male', 'female'],
       formData: {
+        breed: null,
         subBreed: null,
         color: null,
         gender: null,
@@ -107,6 +108,7 @@ export default {
     },
     fillFormData() {
       if (!this.form) return
+      this.formData.breed = this.breed
       this.formData = { ...this.formData, ...this.form }
     }
   }

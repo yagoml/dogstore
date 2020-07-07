@@ -102,13 +102,9 @@ export default {
     },
     checkPurchaseData() {
       const data = purchaseData()
-      if (!data) return
+      if (!data || data.breed !== this.breed) return this.setForm({})
       this.setForm(data)
     }
-  },
-
-  destroyed() {
-    this.setForm({})
   }
 }
 </script>

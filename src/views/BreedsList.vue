@@ -56,11 +56,13 @@ export default {
       return Math.ceil(this.total / this.perPage)
     },
     filteredBreeds() {
-      return Object.keys(this.breeds).filter(breed => breed.match(this.filter))
+      const breeds = Object.keys(this.breeds)
+      if (!this.filter.length) return breeds
+      return breeds.filter(breed => breed.match(this.filter))
     },
     currentBreeds() {
       const startIndex = (this.page - 1) * 9
-      const filtered = this.filteredBreeds
+      const filtered = [...[], ...this.filteredBreeds]
       return filtered.splice(startIndex, this.perPage)
     }
   },

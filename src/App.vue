@@ -12,6 +12,8 @@ export default {
 
 <style lang="scss">
 #app {
+  padding: 15px 0px;
+
   a {
     &:hover {
       text-decoration: none;

@@ -2,7 +2,7 @@
   <div class="breeds-list">
     <b-container>
       <h1>Dog Store</h1>
-      <p>Dogs for sale</p>
+      <p class="breeds-list__description">Dogs for sale</p>
       <b-row>
         <b-col cols="12" lg="4">
           <b-form-input
@@ -48,7 +48,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['breeds', 'loading']),
+    ...mapState(['breeds']),
     total() {
       return this.filteredBreeds.length
     },
@@ -72,3 +72,11 @@ export default {
   methods: {}
 }
 </script>
+
+<style lang="scss">
+.breeds-list {
+  &__description {
+    color: #beee62;
+  }
+}
+</style>

@@ -11,7 +11,7 @@
             v-if="loading"
             class="d-flex align-items-center justify-content-center breed-details__loader"
           >
-            <b-spinner variant="dark" label="Loading" />
+            <b-spinner variant="light" label="Loading" />
           </div>
           <img v-else class="breed-details__image" :src="image" :alt="breed" />
         </b-card>
@@ -19,13 +19,13 @@
       <b-col cols="12" lg="7">
         <BreedForm />
         <BreedCheckout class="mt-3" />
+        <div class="d-flex justify-content-lg-end mt-3">
+          <button class="btn btn-primary">
+            <b-icon-cart-check class="mr-1" /> Buy dog
+          </button>
+        </div>
       </b-col>
     </b-row>
-    <div class="d-flex justify-content-lg-end mt-3">
-      <button class="btn btn-primary">
-        <b-icon-cart-check class="mr-1" /> Buy dog
-      </button>
-    </div>
   </b-container>
 </template>
 
@@ -122,10 +122,20 @@ export default {
 
   &__image {
     max-width: 100%;
+    min-height: 287px;
   }
 
   &__img-card {
     min-height: 290px;
+    background-color: transparent;
+    border: 1px solid #483c46;
+
+    .card-body {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 </style>

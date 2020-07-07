@@ -90,7 +90,7 @@ export default {
     },
     subBreedPrice() {
       const priceData = this.lsPrices[this.breed]
-      if (typeof priceData === 'number') return 0
+      if (typeof priceData === 'number' || !this.form.subBreed) return 0
       return priceData.subBreeds[this.form.subBreed]
     }
   },
@@ -108,17 +108,21 @@ export default {
 
 <style lang="scss">
 .breed-checkout {
+  border: 1px solid #483c46;
+  color: #483c46;
+
   &__item {
     display: flex;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     padding: 15px;
+    transition: 0.2s ease-in-out;
 
     strong {
       margin-left: 10px;
     }
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: rgba(190, 238, 98, 0.4);
     }
   }
 

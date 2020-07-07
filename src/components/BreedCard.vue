@@ -7,7 +7,7 @@
       v-if="loading"
       class="d-flex align-items-center justify-content-center breed-card__loader"
     >
-      <b-spinner variant="dark" label="Loading" />
+      <b-spinner variant="light" label="Loading" />
     </div>
     <b-card
       v-else
@@ -47,27 +47,31 @@ export default {
 .breed-card {
   height: 347px;
   margin-bottom: 20px;
-  transition: 0.25s ease-in-out;
+  transition: 0.2s ease-in-out;
 
   .card {
     width: 100%;
+    border: 1px solid #483c46;
   }
 
   .card-img-top {
     height: 240px;
+    background-color: #483c46;
   }
 
   .card-title,
   .card-text {
     text-transform: capitalize;
-    color: black;
+    color: #483c46;
   }
 
   &:hover {
     transform: scale(1.03);
-    $shadow: 0px 0px 4px -2px rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+    $shadow: 0px 0px 5px 1px #beee62;
 
     .card {
+      border: 1px solid #483c46;
       -webkit-box-shadow: $shadow;
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;
